@@ -1,0 +1,65 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+
+bootJar {
+    group = 'com.ywt'
+    version = '0.0.1-SNAPSHOT'
+    sourceCompatibility = 1.8
+    baseName = 'eureka_client'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.RC1'
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+    maven {
+        url 'https://repo.spring.io/libs-milestone'
+    }
+}
+
+configurations {
+    providedRuntime
+}
+
+ext {
+    springBootVersion = '2.0.1.RELEASE'
+}
+
+dependencies {
+    def springBootVersion = '2.0.1.RELEASE'
+    def eurekaVersion = '1.4.3.RELEASE'
+    def jacksonVersion = '2.9.0'
+
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: "$springBootVersion"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "$springBootVersion"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: "$springBootVersion"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: "$springBootVersion"
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-rsa
+    compile group: 'org.springframework.security', name: 'spring-security-rsa', version: '1.0.5.RELEASE'
+
+
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: "$eurekaVersion"
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
