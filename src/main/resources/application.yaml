@@ -1,14 +1,41 @@
 spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/AMDemo
+    username: postgres
+    password: 1Qaz2wsx3edc
+    driver-class-name: org.postgresql.Driver
+    dbcp2:
+      test-while-idle: true
+      validation-query: SELECT 1
+      max-idle: 20
+      min-idle: 5
+    platform: postgres
   application:
     name: eureka_client1
+  jpa:
+    database: postgresql
+    show-sql: true
+    generate-ddl: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
 server:
-  port: 0
+  port: 10001
+
+
 eureka:
   client:
     serviceUrl:
-      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+      defaultZone: http://localhost:8761/eureka
   instance:
     preferIpAddress: true
-    hostname: ${APPLICATION_DOMAIN}
+    hostname: localhost
     non-secure-port: 80
     secure-port-enabled: true
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'DEBUG'
+    org.springframework.boot: 'DEBUG'

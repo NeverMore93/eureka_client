@@ -49,17 +49,24 @@ ext {
 
 dependencies {
     def springBootVersion = '2.0.1.RELEASE'
-    def eurekaVersion = '1.4.3.RELEASE'
+    def springCloudVersion = '1.4.3.RELEASE'
     def jacksonVersion = '2.9.0'
+    def postgresqlVersion = '42.2.2'
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: "$springBootVersion"
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "$springBootVersion"
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: "$springBootVersion"
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: "$springBootVersion"
-    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-rsa
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: "$springBootVersion"
+
     compile group: 'org.springframework.security', name: 'spring-security-rsa', version: '1.0.5.RELEASE'
 
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
 
-    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: "$eurekaVersion"
+    compile group: 'org.postgresql', name: 'postgresql', version: "$postgresqlVersion"
+
+
+
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: "$springCloudVersion"
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
