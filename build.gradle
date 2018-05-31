@@ -28,6 +28,7 @@ bootJar {
 dependencyManagement {
     imports {
         mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.RC1'
+        mavenBom 'org.springframework.cloud:spring-cloud-bus:2.0.0.RC1'
     }
 }
 
@@ -52,6 +53,7 @@ dependencies {
     def springCloudVersion = '1.4.3.RELEASE'
     def jacksonVersion = '2.9.0'
     def postgresqlVersion = '42.2.2'
+    def AMQPVersion = '1.3.2.RELEASE'
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: "$springBootVersion"
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: "$springBootVersion"
@@ -63,10 +65,18 @@ dependencies {
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
 
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    compile group: 'com.google.guava', name: 'guava', version: '25.0-jre'
+
+
     compile group: 'org.postgresql', name: 'postgresql', version: "$postgresqlVersion"
 
 
 
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: "$springCloudVersion"
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-zuul', version: "$springCloudVersion"
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-ribbon', version: "$springCloudVersion"
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-bus-amqp', version: "$AMQPVersion"
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
