@@ -60,22 +60,23 @@ dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: "$springBootVersion"
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: "$springBootVersion"
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: "$springBootVersion"
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-batch', version: "$springBootVersion"
+
 
     compile group: 'org.springframework.security', name: 'spring-security-rsa', version: '1.0.5.RELEASE'
 
     compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.16.20'
-
-    // https://mvnrepository.com/artifact/com.google.guava/guava
+    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
     compile group: 'com.google.guava', name: 'guava', version: '25.0-jre'
 
 
     compile group: 'org.postgresql', name: 'postgresql', version: "$postgresqlVersion"
 
-
-
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-eureka-client', version: "$springCloudVersion"
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-zuul', version: "$springCloudVersion"
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-netflix-ribbon', version: "$springCloudVersion"
+    compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-openfeign', version: "$springCloudVersion"
+
     compile group: 'org.springframework.cloud', name: 'spring-cloud-starter-bus-amqp', version: "$AMQPVersion"
 
     testCompile('org.springframework.boot:spring-boot-starter-test')
